@@ -12,6 +12,5 @@ class SpaceRemover{
                 System.out.println('.');
             }
         }
-        System.out.println();
     }
 }
