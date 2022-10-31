@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class MainFrame extends JFrame implements ActionListener{
+    JTextField userData =  new JTextField(20);
+    JButton okButton = new JButton("OK");
     public MainFrame(){
         //Нстройка фрейма
         super("Test frame");
@@ -13,24 +15,30 @@ public class MainFrame extends JFrame implements ActionListener{
           
         //Text field
         JLabel pageLabel = new JLabel("Your value -", JLabel.RIGHT);
-        JTextField userData =  new JTextField(20);
         FlowLayout flo2 = new FlowLayout();
         setLayout(flo2);
         add(pageLabel);
         add(userData);
-        String userDaraReceive = userData.getText();//receive text in a field
+        
         
         //Buttons
         FlowLayout flo = new FlowLayout();
         setLayout(flo);
-        JButton okButton = new JButton("OK");
         add(okButton);
+        okButton.addActionListener(this);
         
         //EXIT
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);  
     }
     
+        public void actionPerformed(ActionEvent e)
+    {
+        if (e.getSource() == okButton) {
+            String userDaraReceive = userData.getText();//receive text in a field
+            System.out.println(userDaraReceive);
+        }
+    }
     
     private void setLookAndFeel(){
         try{
@@ -46,8 +54,4 @@ public class MainFrame extends JFrame implements ActionListener{
         MainFrame frame = new MainFrame();
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
