@@ -1,6 +1,7 @@
 package java24hours.WorkWithTerminal;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MainFrame extends JFrame{
     public MainFrame(){
@@ -8,6 +9,15 @@ public class MainFrame extends JFrame{
         super("Test frame");
         setLookAndFeel();
         setSize(450, 200);
+        
+        //Buttons
+        FlowLayout flo = new FlowLayout();
+        setLayout(flo);
+        JButton okButton = new JButton("OK");
+        
+        add(okButton);
+        
+        //EXIT
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);  
     }
