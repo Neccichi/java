@@ -7,11 +7,13 @@ import java.awt.event.*;
 public class MainFrame extends JFrame implements ActionListener{
     JTextField userData =  new JTextField(20);
     JButton okButton = new JButton("OK");
+    private Dialog dialog;
     public MainFrame(){
         //Нстройка фрейма
         super("Test frame");
         setLookAndFeel();
         setSize(450, 200);
+        
           
         //Text field
         JLabel pageLabel = new JLabel("Your value -", JLabel.RIGHT);
@@ -19,6 +21,7 @@ public class MainFrame extends JFrame implements ActionListener{
         setLayout(flo2);
         add(pageLabel);
         add(userData);
+        dialog = new Dialog();
         
         
         //Buttons
@@ -36,7 +39,13 @@ public class MainFrame extends JFrame implements ActionListener{
     {
         if (e.getSource() == okButton) {
             String userDaraReceive = userData.getText();//receive text in a field
-            System.out.println(userDaraReceive);
+            int userDataValue = Integer.parseInt(userDaraReceive);
+            if(userDataValue > 100){
+                System.out.println(userDaraReceive);
+            dialog.setVisible(true);
+            }
+ 
+            
         }
     }
     
