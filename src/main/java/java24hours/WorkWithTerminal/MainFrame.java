@@ -7,7 +7,8 @@ import java.awt.event.*;
 public class MainFrame extends JFrame implements ActionListener{
     JTextField userData =  new JTextField(20);
     JButton okButton = new JButton("OK");
-    private Dialog dialog;
+    private Dialog NumberApproved;
+    private NotDialog NumberNotApproved;
     public MainFrame(){
         //Нстройка фрейма
         super("Test frame");
@@ -21,7 +22,8 @@ public class MainFrame extends JFrame implements ActionListener{
         setLayout(flo2);
         add(pageLabel);
         add(userData);
-        dialog = new Dialog();
+        NumberApproved = new Dialog();
+        NumberNotApproved = new NotDialog();
         
         
         //Buttons
@@ -41,8 +43,9 @@ public class MainFrame extends JFrame implements ActionListener{
             String userDaraReceive = userData.getText();//receive text in a field
             int userDataValue = Integer.parseInt(userDaraReceive);
             if(userDataValue > 100){
-                System.out.println(userDaraReceive);
-            dialog.setVisible(true);
+            NumberApproved.setVisible(true);
+            }else{
+                NumberNotApproved.setVisible(true);
             }
  
             
