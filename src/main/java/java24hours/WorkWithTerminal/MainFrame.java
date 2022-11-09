@@ -44,8 +44,15 @@ public class MainFrame extends JFrame implements ActionListener{
         
         //EXIT
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);  
+        window.setVisible(true); 
         
+        if(SystemTray.isSupported() == true){
+            window.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+        }
+        
+        SystemTray systemTray = SystemTray.getSystemTray();
+        TrayIcon trayIcon = new TrayIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("Link.png")));
+        PopupMenu popMenu = new PopupMenu();
     }
     
 
