@@ -4,47 +4,60 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+import javax.swing.JTextField;
+
+
+
 public class MainFrame extends JFrame implements ActionListener{
+    
+    JFrame window;
     JTextField userData =  new JTextField(20);
     JButton okButton = new JButton("OK");
     private Dialog NumberApproved;
     private NotDialog NumberNotApproved;
+
+
     public MainFrame(){
         //Нстройка фрейма
-        super("Test frame");
+        window = new JFrame();
+        //super("Test frame");
         setLookAndFeel();
-        setSize(450, 200);
+        window.setSize(450, 200);
         
           
         //Text field
         JLabel pageLabel = new JLabel("Your value -", JLabel.RIGHT);
         FlowLayout flo2 = new FlowLayout();
         setLayout(flo2);
-        add(pageLabel);
-        add(userData);
+        window.add(pageLabel);
+        window.add(userData);
         NumberApproved = new Dialog();
         NumberNotApproved = new NotDialog();
+
         
         
         //Buttons
         FlowLayout flo = new FlowLayout();
-        setLayout(flo);
-        add(okButton);
+        window.setLayout(flo);
+        window.add(okButton);
         okButton.addActionListener(this);
         
         //EXIT
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);  
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setVisible(true);  
+        
     }
+    
+
     
         public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == okButton) {
-            String userDaraReceive = userData.getText();//receive text in a field
-            int userDataValue = Integer.parseInt(userDaraReceive);
+            String userDataReceive = userData.getText();//receive text in a field
+            int userDataValue = Integer.parseInt(userDataReceive);
             if(userDataValue > 100){
             NumberApproved.setVisible(true);
-            }else{
+            }else if(userDataValue <= 100){
                 NumberNotApproved.setVisible(true);
             }
  
