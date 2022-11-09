@@ -11,6 +11,8 @@ import java.awt.Toolkit;
 import java.awt.TrayIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,7 +29,7 @@ public class MainFrame extends JFrame implements ActionListener{
     private NotDialog NumberNotApproved;
 
 
-    public MainFrame(){
+    public MainFrame() throws MalformedURLException{
 
         try {
             //Нстройка фрейма
@@ -58,13 +60,16 @@ public class MainFrame extends JFrame implements ActionListener{
             window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             window.setVisible(true);
             
+            //TRAY
+            
             SystemTray tray = SystemTray.getSystemTray();
             Toolkit toolkit = Toolkit.getDefaultToolkit();
-            Image image = toolkit.getImage("trayIcon.jpg");
+            URL url = new URL("https://i.pinimg.com/236x/eb/75/cf/eb75cfcdb05a1f04a46ae26834fa8053.jpg");
+            Image image = toolkit.getImage(url);
             
             PopupMenu menu = new PopupMenu();
             
-            MenuItem messageItem = new MenuItem("Show Message");
+            MenuItem messageItem = new MenuItem("Test");
             messageItem.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     JOptionPane.showMessageDialog(null, "Test <3");
@@ -116,7 +121,7 @@ public class MainFrame extends JFrame implements ActionListener{
         }
     }
     
-    public static void main(String[] arguments){
+    public static void main(String[] arguments) throws MalformedURLException{
         MainFrame frame = new MainFrame();
     }
 
