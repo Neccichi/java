@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-public class SystemTrayDemo {
+public class SystemTrayDemo1 {
   public static void main(String[] args)throws Exception {
     if (!SystemTray.isSupported()) {
       System.out.println("SystemTray is not supported");
