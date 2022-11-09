@@ -2,7 +2,6 @@ package java24hours.WorkWithTerminal;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.Image;
 import java.awt.MenuItem;
 import java.awt.PopupMenu;
