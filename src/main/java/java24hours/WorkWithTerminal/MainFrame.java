@@ -11,6 +11,8 @@ import java.awt.Toolkit;
 import java.awt.TrayIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JTextField;
 
@@ -26,58 +28,63 @@ public class MainFrame extends JFrame implements ActionListener{
 
 
     public MainFrame(){
-        //Нстройка фрейма
-        window = new JFrame();
-        //super("Test frame");
-        setLookAndFeel();
-        window.setSize(450, 200);
-        
-          
-        //Text field
-        JLabel pageLabel = new JLabel("Your value -", JLabel.RIGHT);
-        FlowLayout flo2 = new FlowLayout();
-        setLayout(flo2);
-        window.add(pageLabel);
-        window.add(userData);
-        NumberApproved = new Dialog();
-        NumberNotApproved = new NotDialog();
 
-        
-        
-        //Buttons
-        FlowLayout flo = new FlowLayout();
-        window.setLayout(flo);
-        window.add(okButton);
-        okButton.addActionListener(this);
-        
-        //EXIT
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true); 
-        
-    SystemTray tray = SystemTray.getSystemTray();
-    Toolkit toolkit = Toolkit.getDefaultToolkit();
-    Image image = toolkit.getImage("trayIcon.jpg");
-
-    PopupMenu menu = new PopupMenu();
-
-    MenuItem messageItem = new MenuItem("Show Message");
-    messageItem.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "www.java2s.com");
-      }
-    });
-    menu.add(messageItem);
-
-    MenuItem closeItem = new MenuItem("Close");
-    closeItem.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        System.exit(0);
-      }
-    });
-    menu.add(closeItem);
-    TrayIcon icon = new TrayIcon(image, "SystemTray Demo", menu);
-    icon.setImageAutoSize(true);
-    tray.add(icon);
+        try {
+            //Нстройка фрейма
+            window = new JFrame();
+            //super("Test frame");
+            setLookAndFeel();
+            window.setSize(450, 200);
+            
+            
+            //Text field
+            JLabel pageLabel = new JLabel("Your value -", JLabel.RIGHT);
+            FlowLayout flo2 = new FlowLayout();
+            setLayout(flo2);
+            window.add(pageLabel);
+            window.add(userData);
+            NumberApproved = new Dialog();
+            NumberNotApproved = new NotDialog();
+            
+            
+            
+            //Buttons
+            FlowLayout flo = new FlowLayout();
+            window.setLayout(flo);
+            window.add(okButton);
+            okButton.addActionListener(this);
+            
+            //EXIT
+            window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            window.setVisible(true);
+            
+            SystemTray tray = SystemTray.getSystemTray();
+            Toolkit toolkit = Toolkit.getDefaultToolkit();
+            Image image = toolkit.getImage("trayIcon.jpg");
+            
+            PopupMenu menu = new PopupMenu();
+            
+            MenuItem messageItem = new MenuItem("Show Message");
+            messageItem.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    JOptionPane.showMessageDialog(null, "Test <3");
+                }
+            });
+            menu.add(messageItem);
+            
+            MenuItem closeItem = new MenuItem("Close");
+            closeItem.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    System.exit(0);
+                }
+            });
+            menu.add(closeItem);
+            TrayIcon icon = new TrayIcon(image, "SystemTray Demo", menu);
+            icon.setImageAutoSize(true);
+            tray.add(icon);
+        } catch (AWTException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
   
         
     }
