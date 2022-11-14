@@ -14,13 +14,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.awt.event.*;
 
 import javax.swing.JTextField;
 
 
 
 public class MainFrame extends JFrame implements ActionListener{
-    
     JFrame window;
     JTextField userData =  new JTextField(20);
     JButton okButton = new JButton("OK");
@@ -46,6 +46,22 @@ public class MainFrame extends JFrame implements ActionListener{
             window.add(userData);
             NumberApproved = new Dialog();
             NumberNotApproved = new NotDialog();
+            
+            userData.addKeyListener(new KeyAdapter(){
+                public void keyPressed(KeyEvent ke){
+                    String value = userData.getText();
+                    int l = value.length();
+                    if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') {
+                    userData.setEditable(true);
+                    } else if(ke.getKeyChar() == '\b'){
+                    userData.setEditable(true);       
+                    }else
+                    {
+                    userData.setEditable(false);
+                    
+            }
+                }
+            });
             
             
             
