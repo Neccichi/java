@@ -36,6 +36,9 @@ public class MainFrame extends JFrame implements ActionListener{
             //super("Test frame");
             setLookAndFeel();
             window.setSize(450, 200);
+            Color backcol = new Color(95,75,139);
+            window.getContentPane().setBackground(backcol);
+            userData.setOpaque(false);
             
             
             //Text field
@@ -46,14 +49,14 @@ public class MainFrame extends JFrame implements ActionListener{
             window.add(userData);
             NumberApproved = new Dialog();
             NumberNotApproved = new NotDialog();
-            
+            //only numers check
             userData.addKeyListener(new KeyAdapter(){
                 public void keyPressed(KeyEvent ke){
                     String value = userData.getText();
                     int l = value.length();
                     if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') {
                     userData.setEditable(true);
-                    } else if(ke.getKeyChar() == '\b'){
+                    } else if(ke.getKeyChar() == '\b'){/*backslash*/
                     userData.setEditable(true);       
                     }else
                     {
