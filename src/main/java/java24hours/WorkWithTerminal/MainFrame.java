@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import java.awt.event.*;
 
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 
 
@@ -42,10 +43,14 @@ public class MainFrame extends JFrame implements ActionListener{
             window.setVisible(true);
             //background color and textfield settings
             Color backcol = new Color(95,75,139);
+            Color bordercol=  new Color(230,158,143);
             window.getContentPane().setBackground(backcol);
             userData.setOpaque(false);
-            userData.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-            
+            userData.setBorder(javax.swing.BorderFactory.createEmptyBorder()); 
+            Border oldBorder = userData.getBorder();
+            Border redBorder = BorderFactory.createMatteBorder(0, 0, 2, 0, bordercol);
+            Border newBorder = BorderFactory.createCompoundBorder(redBorder, oldBorder);
+            userData.setBorder(newBorder);
             
             //Text field
             JLabel pageLabel = new JLabel("Your value -", JLabel.RIGHT);
