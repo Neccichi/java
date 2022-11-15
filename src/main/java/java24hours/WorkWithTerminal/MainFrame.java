@@ -44,6 +44,7 @@ public class MainFrame extends JFrame implements ActionListener{
             Color backcol = new Color(95,75,139);
             window.getContentPane().setBackground(backcol);
             userData.setOpaque(false);
+            userData.setBorder(javax.swing.BorderFactory.createEmptyBorder());
             
             
             //Text field
