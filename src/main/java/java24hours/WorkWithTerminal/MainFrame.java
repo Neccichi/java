@@ -27,6 +27,7 @@ public class MainFrame extends JFrame implements ActionListener{
     JButton okButton = new JButton("OK");
     private Dialog NumberApproved;
     private NotDialog NumberNotApproved;
+    ImageIcon myIcon = new ImageIcon("myicon.png");
 
 
     public MainFrame() throws MalformedURLException{
@@ -35,6 +36,7 @@ public class MainFrame extends JFrame implements ActionListener{
             //Нстройка фрейма
      
             window = new JFrame();
+          
             //super("Test frame");
             setLookAndFeel();
             
@@ -42,6 +44,8 @@ public class MainFrame extends JFrame implements ActionListener{
             window.setSize(450, 200);
             window.setLocationRelativeTo(null);
             window.setVisible(true);
+            window.setTitle("Test app");
+            window.setIconImage(myIcon.getImage());
             
             //background color and textfield settings
             Color backcol = new Color(95,75,139);
