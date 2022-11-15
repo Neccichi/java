@@ -18,6 +18,8 @@ import java.awt.event.*;
 
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 
 
@@ -79,11 +81,51 @@ public class MainFrame extends JFrame implements ActionListener{
             NumberApproved = new Dialog();
             NumberNotApproved = new NotDialog();
             
+            //buttom settings
+            okButton.setFont(mainFont);
+            okButton.setForeground(bordercol);
+            Border oldBorder2 = okButton.getBorder();
+            Border redBorder2 = BorderFactory.createMatteBorder(2, 2, 2, 2, bordercol);
+            Border newBorder2 = BorderFactory.createCompoundBorder(redBorder2, oldBorder2);
+            okButton.setBorder(newBorder2);
+            
+            
+            okButton.setEnabled(false);
+            userData.getDocument().addDocumentListener(new DocumentListener() {
+                public void changedUpdate(DocumentEvent e) {
+                    changed();
+                }
+                public void removeUpdate(DocumentEvent e) {
+                    changed();
+                }
+                public void insertUpdate(DocumentEvent e) {
+                    changed();
+                }
+                
+                public void changed() {
+                    if (userData.getText().equals("")){
+                        okButton.setEnabled(false);
+                    }
+                    else {
+                        okButton.setEnabled(true);
+                    }
+                }
+            });
+            
             //only numers check
             userData.addKeyListener(new KeyAdapter(){
                 public void keyPressed(KeyEvent ke){
                     String value = userData.getText();
                     int l = value.length();
+                    /*
+                    okButton.setEnabled(false);
+                    if(userData.getText().equals("")){
+                        okButton.setEnabled(false);
+                    }else{
+                        okButton.setEnabled(true);
+                    }
+                    */
+                    
                     if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') {
                     userData.setEditable(true);
                     } else if(ke.getKeyChar() == '\b'){/*backslash*/
