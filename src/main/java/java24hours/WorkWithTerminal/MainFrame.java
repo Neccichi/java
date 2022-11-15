@@ -117,14 +117,7 @@ public class MainFrame extends JFrame implements ActionListener{
                 public void keyPressed(KeyEvent ke){
                     String value = userData.getText();
                     int l = value.length();
-                    /*
-                    okButton.setEnabled(false);
-                    if(userData.getText().equals("")){
-                        okButton.setEnabled(false);
-                    }else{
-                        okButton.setEnabled(true);
-                    }
-                    */
+
                     
                     if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') {
                     userData.setEditable(true);
