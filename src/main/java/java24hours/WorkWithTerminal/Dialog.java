@@ -10,7 +10,7 @@ public class Dialog extends JDialog {
         JLabel pageLabel = new JLabel("Your number is approved", JLabel.CENTER);
         add(pageLabel);
 
-        setVisible(false);
+        setVisible(false); 
 
         setSize(300, 300);
 
