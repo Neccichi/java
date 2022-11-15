@@ -37,29 +37,44 @@ public class MainFrame extends JFrame implements ActionListener{
             window = new JFrame();
             //super("Test frame");
             setLookAndFeel();
+            
             //app on the center
             window.setSize(450, 200);
             window.setLocationRelativeTo(null);
             window.setVisible(true);
+            
             //background color and textfield settings
             Color backcol = new Color(95,75,139);
             Color bordercol=  new Color(230,158,143);
             window.getContentPane().setBackground(backcol);
             userData.setOpaque(false);
+            
+            //jtextfield border settings
             userData.setBorder(javax.swing.BorderFactory.createEmptyBorder()); 
             Border oldBorder = userData.getBorder();
             Border redBorder = BorderFactory.createMatteBorder(0, 0, 2, 0, bordercol);
             Border newBorder = BorderFactory.createCompoundBorder(redBorder, oldBorder);
             userData.setBorder(newBorder);
             
-            //Text field
+            //jtextfield text settings
+            userData.setForeground(bordercol);
+            Font mainFont = new Font("SansSerif", Font.BOLD, 20);
+            userData.setFont(mainFont);
+            
+            
+            //label settings
             JLabel pageLabel = new JLabel("Your value -", JLabel.RIGHT);
+            pageLabel.setFont(mainFont);
+            pageLabel.setForeground(bordercol);
+            
+            //layout and components
             FlowLayout flo2 = new FlowLayout();
             setLayout(flo2);
             window.add(pageLabel);
             window.add(userData);
             NumberApproved = new Dialog();
             NumberNotApproved = new NotDialog();
+            
             //only numers check
             userData.addKeyListener(new KeyAdapter(){
                 public void keyPressed(KeyEvent ke){
