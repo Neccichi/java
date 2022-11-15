@@ -32,10 +32,15 @@ public class MainFrame extends JFrame implements ActionListener{
 
         try {
             //Нстройка фрейма
+     
             window = new JFrame();
             //super("Test frame");
             setLookAndFeel();
+            //app on the center
             window.setSize(450, 200);
+            window.setLocationRelativeTo(null);
+            window.setVisible(true);
+            //background color and textfield settings
             Color backcol = new Color(95,75,139);
             window.getContentPane().setBackground(backcol);
             userData.setOpaque(false);
@@ -58,8 +63,9 @@ public class MainFrame extends JFrame implements ActionListener{
                     userData.setEditable(true);
                     } else if(ke.getKeyChar() == '\b'){/*backslash*/
                     userData.setEditable(true);       
-                    }else
-                    {
+                    }else if(l>20){
+                    userData.setEditable(false);
+                    }else{
                     userData.setEditable(false);
                     
             }
